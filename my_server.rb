@@ -1,3 +1,9 @@
-require './my_server.rb'
+class MyServer
+  def call(evn)
+    return [200, {'Content-Type' => 'text/html'}, pretty_response]
+  end
 
-run MyServer.new
+  def pretty_response
+    (Time.to_i % 2).zero? ? [<em>Hello</em>] : [<strong>Hello</strong>]
+  end
+end
